@@ -7,6 +7,7 @@ type Props = {
     price: number;
     imgUrl: string;
   };
+  click: () => void;
 };
 
 function Dish(props: Props) {
@@ -15,10 +16,10 @@ function Dish(props: Props) {
       <img src={props.dish.imgUrl} alt={props.dish.name} />
       <div className={styles.infoFlex}>
         <p>{props.dish.name}</p>
-        <p>{`${props.dish.price}$`}</p>
+        <p>{props.dish.price}$</p>
       </div>
       <p>{props.dish.ingredients}</p>
-      <button type="button">Add to cart</button>
+      <button type="button" onClick={props.click}>Add to cart</button>
     </div>
   );
 }

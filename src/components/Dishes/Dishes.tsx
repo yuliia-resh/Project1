@@ -4,13 +4,20 @@ import { ProductsContext } from "../../context/productsContext";
 import { useContext } from "react";
 
 function Dishes() {
-  const contextData = useContext(ProductsContext);
+  const productsContext = useContext(ProductsContext);
 
+  type Product = {
+    id: number;
+    name: string;
+    ingredients: string;
+    price: number;
+    imgUrl: string;
+  };
   return (
     <div className={styles.dishes}>
-      {contextData.map((item: any) => {
-        return <Dish key={item.id} dish={item} />;
-      })}
+      {productsContext.map((item: Product) => (
+        <Dish key={item.id} dish={item} click={() => console.log(item)} />
+      ))}
     </div>
   );
 }
