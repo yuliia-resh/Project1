@@ -26,4 +26,3 @@ export const PRODUCTS = [
     imgUrl: "https://assets.rbl.ms/21608152/origin.jpg",
   },
 ];
-

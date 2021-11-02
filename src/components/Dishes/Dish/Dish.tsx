@@ -1,13 +1,13 @@
 import styles from "./Dish.module.scss";
 
 type Props = {
-    dish: {
-        name: string,
-        ingredients: string,
-        price: number, 
-        imgUrl: string
-    }
-  }
+  dish: {
+    name: string;
+    ingredients: string;
+    price: number;
+    imgUrl: string;
+  };
+};
 
 function Dish(props: Props) {
   return (
