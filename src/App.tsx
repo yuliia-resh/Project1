@@ -6,7 +6,7 @@ import { ProductsContext } from "./context/productsContext";
 import { PRODUCTS } from "./constants/products";
 
 function App() {
-  let [productDetails] = useState(PRODUCTS);
+  const [productDetails] = useState(PRODUCTS);
   return (
     <ProductsContext.Provider value={productDetails}>
       <div className="App">
