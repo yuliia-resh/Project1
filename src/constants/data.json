@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "Beef",
+      "price": 12,
+      "image": "https://www.themealdb.com/images/category/beef.png",
+      "ingredients": ["Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 2,
+      "title": "Chicken",
+      "price": 20,
+      "image": "https://www.themealdb.com/images/category/chicken.png",
+      "ingredients": ["Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 3,
+      "title": "Dessert",
+      "price": 35,
+      "image": "https://www.themealdb.com/images/category/dessert.png",
+      "ingredients": ["Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 4,
+      "title": "Lamb",
+      "price": 15,
+      "image": "https://www.themealdb.com/images/category/lamb.png",
+      "ingredients": ["Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 5,
+      "title": "Miscellaneous",
+      "price": 10,
+      "image": "https://www.themealdb.com/images/category/miscellaneous.png",
+      "ingredients": [
+        "Meat",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Oil"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Pasta",
+      "price": 20,
+      "image": "https://www.themealdb.com/images/category/pasta.png",
+      "ingredients": ["Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 7,
+      "title": "Pork",
+      "price": 30,
+      "image": "https://www.themealdb.com/images/category/pork.png",
+      "ingredients": ["Sugar", "Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 8,
+      "title": "Seafood",
+      "price": 22,
+      "image": "https://www.themealdb.com/images/category/seafood.png",
+      "ingredients": ["Meat", "Tomato", "Oil"]
+    },
+    {
+      "id": 9,
+      "title": "Side",
+      "price": 35,
+      "image": "https://www.themealdb.com/images/category/side.png",
+      "ingredients": ["Meat", "Tomato", "Oil", "Sugar"]
+    }
+  ],
+  "cart": []
+}

@@ -3,28 +3,31 @@ import styles from "./Dish.module.scss";
 
 type Props = {
   dish: {
-    name: string;
-    ingredients: string;
+    title: string;
+    ingredients: [];
     price: number;
-    imgUrl: string;
+    image: string;
   };
 };
 
 export class Dish extends React.Component<Props> {
-  render () {
-     return (
-    <div className={styles.dish}>
-      <img src={this.props.dish.imgUrl} alt={this.props.dish.name} />
-      <div className={styles.infoFlex}>
-        <p>{this.props.dish.name}</p>
-        <p>{`${this.props.dish.price}$`}</p>
+  render() {
+    return (
+      <div className={styles.dish}>
+        <img src={this.props.dish.image} alt={this.props.dish.title} />
+        <div className={styles.infoFlex}>
+          <p>{this.props.dish.title}</p>
+          <p>{`${this.props.dish.price}$`}</p>
+        </div>
+          {this.props.dish.ingredients.map((ingr, index) => {
+            return <p key={index}>{ingr}</p>;
+          })}
+        <button type="button" className={styles.button}>
+          Add to cart
+        </button>
       </div>
-      <p>{this.props.dish.ingredients}</p>
-      <button type="button" className={styles.button}>Add to cart</button>
-    </div>
-  );
+    );
   }
- 
 }
 
 export default Dish;
