@@ -3,20 +3,20 @@ import styles from "./Dishes.module.scss";
 import { ProductsContext } from "../../context/productsContext";
 import { useContext } from "react";
 
+type Product = {
+  id: number;
+  name: string;
+  ingredients: string;
+  price: number;
+  imgUrl: string;
+};
+
 function Dishes() {
   const productsContext = useContext(ProductsContext);
-
-  type Product = {
-    id: number;
-    name: string;
-    ingredients: string;
-    price: number;
-    imgUrl: string;
-  };
   return (
     <div className={styles.dishes}>
-      {productsContext.map((item: Product) => (
-        <Dish key={item.id} dish={item} click={() => console.log(item)} />
+      {productsContext.map((product: Product) => (
+        <Dish key={product.id} dish={product} click={() => console.log(product)} />
       ))}
     </div>
   );
