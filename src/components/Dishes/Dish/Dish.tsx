@@ -1,28 +1,44 @@
 import React from "react";
 import styles from "./Dish.module.scss";
 
-type Props = {
-  dish: {
-    title: string;
-    ingredients: [];
-    price: number;
-    image: string;
-  };
+type Product = {
+  id: number;
+  title: string;
+  ingredients: [];
+  price: number;
+  image: string;
 };
+
+type Props = {
+  dish: Product;
+  addToCart: (dish: Product) => void;
+};
+
+
 
 export class Dish extends React.Component<Props> {
   render() {
+    const {dish, addToCart} = this.props;
+    const productIngredients = dish.ingredients.join(", ");
+
     return (
       <div className={styles.dish}>
-        <img src={this.props.dish.image} alt={this.props.dish.title} />
+        <img src={dish.image} alt={dish.title} />
         <div className={styles.infoFlex}>
-          <p>{this.props.dish.title}</p>
-          <p>{`${this.props.dish.price}$`}</p>
+          <p>{dish.title}</p>
+          <p>{dish.price}$</p>
         </div>
-          {this.props.dish.ingredients.map((ingr, index) => {
-            return <p key={index}>{ingr}</p>;
-          })}
-        <button type="button" className={styles.button}>
+        <div className={styles.ingredients}>
+          <p>{productIngredients}</p>
+        </div>
+        <button
+          type="button"
+          className={styles.button}
+          onClick={() => {
+            addToCart(dish)
+          
+          }}
+        >
           Add to cart
         </button>
       </div>
