@@ -19,7 +19,8 @@ class Cart extends React.Component {
       <ProductsContext.Consumer>
         {(context) => (
           <div className={styles.cart}>
-            <NavLink to="/">
+
+            <div className={styles.pin}> <NavLink to="/">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
                 alt="Close shopping cart"
@@ -30,7 +31,8 @@ class Cart extends React.Component {
             </NavLink>
             <h3 className={`${styles.textCart} ${styles.borderBottom}`}>
               Cart
-            </h3>
+            </h3></div>
+           
 
             {context.cart.map((cartItem: cartItem) => {
               return (

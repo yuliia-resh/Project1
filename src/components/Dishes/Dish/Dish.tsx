@@ -31,7 +31,7 @@ export class Dish extends React.Component<Props> {
         </div>
         <button
           type="button"
-          className={styles.button}
+          className={`${styles.button} ${styles.gradient}`}
           onClick={() => {
             addToCart(dish);
           }}
