@@ -1,13 +1,38 @@
 .cart {
-  width: 30%;
-  background-color: green;
-
-  .textCart {
-    text-align: center;
-    font-size: 30px;
-    font-family: 'Open Sans';
-    font-weight: 700;
-    color: #000000;
-    border-bottom: 1px solid black;
+  position: fixed;
+  right: 0;
+  width: 20%;
+  background-color: rgba(155, 163, 163, 0.753);
+  padding: 10px;
+  height: 100%;
+  img {
+    object-fit: contain;
+    left: 0;
+    width: 20px;
   }
+  img:hover {
+    cursor: pointer;
+  }
+}
+
+.textCart {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+  color: #000000;
+  margin: 10px;
+}
+
+.flexItems {
+  display: flex;
+}
+
+.borderTop {
+  border-top: 1px solid black;
+}
+
+.borderBottom {
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
 }

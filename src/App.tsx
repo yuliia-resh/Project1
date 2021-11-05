@@ -1,13 +1,7 @@
-import React, { ComponentType } from "react";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
-  BrowserRouter,
-  HashRouter,
-  Route,
-  Router,
-  RouterProps,
-  Routes,
-} from "react-router-dom";
-import {
+  deleteCartProduct,
   getAllProducts,
   getCartProducts,
   postToCart,
@@ -25,6 +19,9 @@ type State = {
   loading: boolean;
   error: any;
   addToCart: (product: Product) => Promise<void>;
+  deleteFromCart: (productId: number) => Promise<void>;
+  handleClick: () => void;
+  isCartVisible: boolean;
 };
 
 type Product = {
@@ -46,6 +43,7 @@ type cartItem = {
 
 class App extends React.Component<{}, State> {
   constructor(props: any) {
+    // props type is any because we dont have any props in this component but we should use the super method for the constructor
     super(props);
     this.state = {
       products: [],
@@ -53,6 +51,9 @@ class App extends React.Component<{}, State> {
       error: null,
       loading: false,
       addToCart: this.addToCart,
+      deleteFromCart: this.deleteFromCart,
+      handleClick: this.handleClick,
+      isCartVisible: false,
     };
   }
 
@@ -82,7 +83,7 @@ class App extends React.Component<{}, State> {
 
   addToCart = async (product: Product) => {
     const newObj = { ...product, count: 1 };
-    const cartProduct: any = this.state.cart.find(
+    const cartProduct: any = this.state.cart.find( //I dont know which type i should use on cartProduct
       (cartProd: cartItem) => cartProd.id === product.id
     );
     if (!cartProduct) {
@@ -106,6 +107,19 @@ class App extends React.Component<{}, State> {
     }
   };
 
+  deleteFromCart = async (productId: number) => {
+    try {
+      await deleteCartProduct(productId);
+      await this.getCartProductsApi();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  handleClick = () => {
+    this.setState({ isCartVisible: !this.state.isCartVisible });
+  };
+
   componentDidMount() {
     this.getCartProductsApi();
     this.getProductsApi();
@@ -118,7 +132,7 @@ class App extends React.Component<{}, State> {
           <div className="App">
             <Header />
             <Routes>
-              <Route path="/cart" element={<Cart/>}/>
+              <Route path="/cart" element={<Cart />} />
             </Routes>
             <Dishes />
           </div>

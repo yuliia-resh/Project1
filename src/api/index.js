@@ -17,3 +17,7 @@ export const getCartProducts = () => {
 export const updateCartProductWithId = (updatedProduct) => {
     return axios.put(BASE_URL+`/cart/${updatedProduct.id}`, updatedProduct)
 }
+
+export const deleteCartProduct = (productId) => {
+    return axios.delete(BASE_URL+`/cart/${productId}`)
+}

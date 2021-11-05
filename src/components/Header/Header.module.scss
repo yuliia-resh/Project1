@@ -1,4 +1,9 @@
 .header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  width: 98%;
+  height: 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;

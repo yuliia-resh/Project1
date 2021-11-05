@@ -14,11 +14,9 @@ type Props = {
   addToCart: (dish: Product) => void;
 };
 
-
-
 export class Dish extends React.Component<Props> {
   render() {
-    const {dish, addToCart} = this.props;
+    const { dish, addToCart } = this.props;
     const productIngredients = dish.ingredients.join(", ");
 
     return (
@@ -35,8 +33,7 @@ export class Dish extends React.Component<Props> {
           type="button"
           className={styles.button}
           onClick={() => {
-            addToCart(dish)
-          
+            addToCart(dish);
           }}
         >
           Add to cart

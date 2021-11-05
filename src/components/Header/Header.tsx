@@ -1,10 +1,13 @@
 import styles from "./Header.module.scss";
 import React from "react";
 import { ProductsContext } from "../../context/productsContext";
-import Cart from "../Cart/Cart";
 import { NavLink } from "react-router-dom";
 
-class Header extends React.Component<{}, any> {
+type cartItem = {
+  count: number;
+};
+
+class Header extends React.Component<{}> {
   render() {
     return (
       <ProductsContext.Consumer>
@@ -12,15 +15,26 @@ class Header extends React.Component<{}, any> {
           <div className={styles.header}>
             <p className={styles.cafeName}>Cafe name</p>
             <div className={styles.cart}>
-              <NavLink to="/cart">
-                <img
-                  src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
-                  alt="Cart"
-                />
-              </NavLink>
+              <div onClick={() => context.handleClick()}>
+                {context.isCartVisible ? ( //this code need for close the shoping cart with click on the cart
+                  <NavLink to="/cart">
+                    <img
+                      src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
+                      alt="Cart"
+                    />
+                  </NavLink>
+                ) : (
+                  <NavLink to="/">
+                    <img
+                      src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
+                      alt="Cart"
+                    />
+                  </NavLink>
+                )}
+              </div>
 
               <p>
-                {context.cart.reduce((acc: any, item: any) => {
+                {context.cart.reduce((acc: number, item: cartItem) => {
                   return acc + item.count;
                 }, 0)}
               </p>

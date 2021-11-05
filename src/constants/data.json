@@ -124,22 +124,6 @@
   ],
   "cart": [
     {
-      "id": 1,
-      "title": "Raspberry waffle",
-      "price": 12,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkSxj_nkffcX8QTSQcvFo7BJnScZCIWD6e9w&usqp=CAU",
-      "ingredients": [
-        "Raspberries",
-        "milk",
-        "coconut oil",
-        "flour",
-        "eggs",
-        "lemon juice",
-        "syrup"
-      ],
-      "count": 10
-    },
-    {
       "id": 2,
       "title": "Burger",
       "price": 23,
@@ -155,76 +139,23 @@
         "salt",
         "pepper"
       ],
-      "count": 12
-    },
-    {
-      "id": 3,
-      "title": "Dessert",
-      "price": 35,
-      "image": "https://assets.rbl.ms/21608152/origin.jpg",
-      "ingredients": [
-        "Meat",
-        "Tomato",
-        "Oil"
-      ],
-      "count": 7
-    },
-    {
-      "id": 9,
-      "title": "Side",
-      "price": 35,
-      "image": "https://www.themealdb.com/images/category/side.png",
-      "ingredients": [
-        "Meat",
-        "Tomato",
-        "Oil",
-        "Sugar"
-      ],
-      "count": 3
-    },
-    {
-      "id": 8,
-      "title": "Seafood",
-      "price": 22,
-      "image": "https://www.themealdb.com/images/category/seafood.png",
-      "ingredients": [
-        "Meat",
-        "Tomato",
-        "Oil"
-      ],
-      "count": 1
-    },
-    {
-      "id": 7,
-      "title": "Pork",
-      "price": 30,
-      "image": "https://www.themealdb.com/images/category/pork.png",
-      "ingredients": [
-        "Sugar",
-        "Meat",
-        "Tomato",
-        "Oil"
-      ],
       "count": 5
     },
     {
-      "id": 5,
-      "title": "Miscellaneous",
-      "price": 10,
-      "image": "https://www.themealdb.com/images/category/miscellaneous.png",
+      "id": 1,
+      "title": "Raspberry waffle",
+      "price": 12,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkSxj_nkffcX8QTSQcvFo7BJnScZCIWD6e9w&usqp=CAU",
       "ingredients": [
-        "Meat",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Oil"
+        "Raspberries",
+        "milk",
+        "coconut oil",
+        "flour",
+        "eggs",
+        "lemon juice",
+        "syrup"
       ],
-      "count": 1
+      "count": 2
     }
   ]
 }

@@ -11,21 +11,7 @@ type Product = {
   image: string;
 };
 
-type State = {
-  cart: [
-    {
-      id: number;
-      title: string;
-      ingredients: [];
-      price: number;
-      image: string;
-      count: number;
-    }
-  ];
-  loading: boolean;
-};
-
-class Dishes extends React.Component<{}, State> {
+class Dishes extends React.Component {
   render() {
     return (
       <ProductsContext.Consumer>
@@ -37,7 +23,7 @@ class Dishes extends React.Component<{}, State> {
                   dish={product}
                   key={product.id}
                   addToCart={(product) => {
-                    context.addToCart(product)
+                    context.addToCart(product);
                   }}
                 />
               );
