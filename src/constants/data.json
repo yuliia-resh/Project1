@@ -145,7 +145,7 @@
         "Tomato",
         "Oil"
       ],
-      "count": 1
+      "count": 2
     },
     {
       "id": 4,
@@ -177,6 +177,25 @@
         "ketchup",
         "salt",
         "pepper"
+      ],
+      "count": 1
+    },
+    {
+      "id": 5,
+      "title": "Miscellaneous",
+      "price": 10,
+      "image": "https://www.themealdb.com/images/category/miscellaneous.png",
+      "ingredients": [
+        "Meat",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Oil"
       ],
       "count": 1
     }

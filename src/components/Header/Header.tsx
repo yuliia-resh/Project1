@@ -2,6 +2,7 @@ import styles from "./Header.module.scss";
 import React from "react";
 import { ProductsContext } from "../../context/productsContext";
 import { NavLink } from "react-router-dom";
+import Search from "./Search/Search";
 
 type cartItem = {
   count: number;
@@ -14,8 +15,12 @@ class Header extends React.Component<{}> {
         {(context) => (
           <div className={styles.header}>
             <p className={styles.cafeName}>Cafe name</p>
+
+            <Search/>
+
+
             <div className={styles.cart}>
-              <div onClick={() => context.handleClick()}>
+              <div onClick={() => context.handleCartClick()}>
                 {context.isCartVisible ? ( //this code need for close the shoping cart with click on the cart
                   <NavLink to="/cart">
                     <img

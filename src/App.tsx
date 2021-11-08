@@ -16,11 +16,12 @@ import { ProductsContext } from "./context/productsContext";
 type State = {
   products: [];
   cart: [];
+  searchResults: Product[];
   loading: boolean;
   error: any;
   addToCart: (product: Product) => Promise<void>;
   deleteFromCart: (productId: number) => Promise<void>;
-  handleClick: () => void;
+  handleCartClick: () => void;
   isCartVisible: boolean;
 };
 
@@ -48,11 +49,12 @@ class App extends React.Component<{}, State> {
     this.state = {
       products: [],
       cart: [],
+      searchResults: [],
       error: null,
       loading: false,
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart,
-      handleClick: this.handleClick,
+      handleCartClick: this.handleCartClick,
       isCartVisible: false,
     };
   }
@@ -116,7 +118,7 @@ class App extends React.Component<{}, State> {
     }
   };
 
-  handleClick = () => {
+  handleCartClick = () => {
     this.setState({ isCartVisible: !this.state.isCartVisible });
   };
 

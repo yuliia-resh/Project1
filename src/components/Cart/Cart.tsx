@@ -25,7 +25,7 @@ class Cart extends React.Component {
                 src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
                 alt="Close shopping cart"
                 onClick={() => {
-                  context.handleClick();
+                  context.handleCartClick();
                 }}
               />
             </NavLink>
