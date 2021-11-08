@@ -3,10 +3,6 @@ import React from "react";
 import { ProductsContext } from "../../context/productsContext";
 import { NavLink } from "react-router-dom";
 
-type cartItem = {
-  count: number;
-};
-
 class Header extends React.Component<{}> {
   render() {
     return (
@@ -23,11 +19,7 @@ class Header extends React.Component<{}> {
                   />
                 </NavLink>
               </div>
-              <p>
-                {context.cart.reduce((acc: number, item: cartItem) => {
-                  return acc + item.count;
-                }, 0)}
-              </p>
+              <p>{context.getCountsOfProducts()}</p>
             </div>
           </div>
         )}

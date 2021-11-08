@@ -3,10 +3,12 @@ export type AppState = {
   cart: CartItem[];
   isLoading: boolean;
   error: any;
+  isCartVisible: boolean;
+  getCountsOfProducts: () => number;
   addToCart: (product: Product) => Promise<void>;
   deleteFromCart: (productId: number) => Promise<void>;
   handleClick: () => void;
-  isCartVisible: boolean;
+  getTotalPrice: () => number;
 };
 
 export type Product = {
@@ -27,9 +29,9 @@ export type CartItem = {
 };
 
 export type CartItemInfo = {
-    id: number;
-    title: string;
-    subTotal: number;
-    quantity: number;
-    deleteFromCart: (id: number) => void
-}
+  id: number;
+  title: string;
+  subTotal: number;
+  quantity: number;
+  deleteFromCart: (id: number) => void;
+};

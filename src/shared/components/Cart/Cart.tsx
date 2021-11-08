@@ -14,7 +14,8 @@ type cartItem = {
   count: number;
 };
 
-const h3Classes = classNames(styles.textCart, styles.borderTop);
+const totalClasses = classNames(styles.textCart, styles.borderTop);
+const textCartClasses = classNames(styles.textCart, styles.borderBottom)
 
 class Cart extends React.Component {
   render() {
@@ -31,7 +32,7 @@ class Cart extends React.Component {
                 }}
               />
             </NavLink>
-            <h3 className={`${styles.textCart} ${styles.borderBottom}`}>
+            <h3 className={textCartClasses}>
               Cart
             </h3>
 
@@ -47,11 +48,9 @@ class Cart extends React.Component {
                 />
               );
             })}
-            <h3 className={h3Classes}>
+            <h3 className={totalClasses}>
               Total:{" "}
-              {context.cart.reduce((acc: number, curr: cartItem) => {
-                return acc + curr.count * curr.price;
-              }, 0)}
+              {context.getTotalPrice()}
               $
             </h3>
           </div>
