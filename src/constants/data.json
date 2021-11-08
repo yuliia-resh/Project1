@@ -124,38 +124,35 @@
   ],
   "cart": [
     {
-      "id": 2,
-      "title": "Burger",
-      "price": 23,
-      "image": "https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/9:4/w_3752,h_1667,c_limit/Smashburger-recipe-120219.jpg",
+      "id": 5,
+      "title": "Miscellaneous",
+      "price": 10,
+      "image": "https://www.themealdb.com/images/category/miscellaneous.png",
       "ingredients": [
-        "Beef",
-        "egg",
-        "onions",
-        "lettuce",
-        "tomato",
-        "mayonnaise",
-        "ketchup",
-        "salt",
-        "pepper"
+        "Meat",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Sugar",
+        "Oil"
       ],
-      "count": 5
+      "count": 1
     },
     {
-      "id": 1,
-      "title": "Raspberry waffle",
-      "price": 12,
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkSxj_nkffcX8QTSQcvFo7BJnScZCIWD6e9w&usqp=CAU",
+      "id": 8,
+      "title": "Seafood",
+      "price": 22,
+      "image": "https://www.themealdb.com/images/category/seafood.png",
       "ingredients": [
-        "Raspberries",
-        "milk",
-        "coconut oil",
-        "flour",
-        "eggs",
-        "lemon juice",
-        "syrup"
+        "Meat",
+        "Tomato",
+        "Oil"
       ],
-      "count": 2
+      "count": 1
     }
   ]
 }

@@ -16,23 +16,13 @@ class Header extends React.Component<{}> {
             <p className={styles.cafeName}>Cafe name</p>
             <div className={styles.cart}>
               <div onClick={() => context.handleClick()}>
-                {context.isCartVisible ? ( //this code need for close the shoping cart with click on the cart
-                  <NavLink to="/cart">
-                    <img
-                      src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
-                      alt="Cart"
-                    />
-                  </NavLink>
-                ) : (
-                  <NavLink to="/">
-                    <img
-                      src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
-                      alt="Cart"
-                    />
-                  </NavLink>
-                )}
+                <NavLink to={context.isCartVisible ? "/cart" : "/"}>
+                  <img
+                    src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
+                    alt="Cart"
+                  />
+                </NavLink>
               </div>
-
               <p>
                 {context.cart.reduce((acc: number, item: cartItem) => {
                   return acc + item.count;

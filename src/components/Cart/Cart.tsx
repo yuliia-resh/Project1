@@ -3,6 +3,7 @@ import React from "react";
 import { ProductsContext } from "../../context/productsContext";
 import CartItem from "./CartItem/CartItem";
 import { NavLink } from "react-router-dom";
+let classNames = require('classnames');
 
 type cartItem = {
   id: number;
@@ -12,6 +13,8 @@ type cartItem = {
   image: string;
   count: number;
 };
+
+const h3Classes = classNames(styles.textCart, styles.borderTop);
 
 class Cart extends React.Component {
   render() {
@@ -35,7 +38,7 @@ class Cart extends React.Component {
             {context.cart.map((cartItem: cartItem) => {
               return (
                 <CartItem
-                  key={cartItem.id} //I cant use key in props in CartItem component, thats why I give the same element in id and key
+                  key={cartItem.id}
                   id={cartItem.id}
                   title={cartItem.title}
                   quantity={cartItem.count}
@@ -44,7 +47,7 @@ class Cart extends React.Component {
                 />
               );
             })}
-            <h3 className={`${styles.textCart} ${styles.borderTop}`}>
+            <h3 className={h3Classes}>
               Total:{" "}
               {context.cart.reduce((acc: number, curr: cartItem) => {
                 return acc + curr.count * curr.price;

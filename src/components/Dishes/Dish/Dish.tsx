@@ -1,13 +1,6 @@
 import React from "react";
+import { Product } from "../../../types/types";
 import styles from "./Dish.module.scss";
-
-type Product = {
-  id: number;
-  title: string;
-  ingredients: [];
-  price: number;
-  image: string;
-};
 
 type Props = {
   dish: Product;
@@ -17,7 +10,7 @@ type Props = {
 export class Dish extends React.Component<Props> {
   render() {
     const { dish, addToCart } = this.props;
-    const productIngredients = dish.ingredients.join(", ");
+    const ingredients = dish.ingredients.join(", ");
 
     return (
       <div className={styles.dish}>
@@ -27,7 +20,7 @@ export class Dish extends React.Component<Props> {
           <p>{dish.price}$</p>
         </div>
         <div className={styles.ingredients}>
-          <p>{productIngredients}</p>
+          <p>{ingredients}</p>
         </div>
         <button
           type="button"

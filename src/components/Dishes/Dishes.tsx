@@ -2,14 +2,7 @@ import Dish from "./Dish/Dish";
 import styles from "./Dishes.module.scss";
 import { ProductsContext } from "../../context/productsContext";
 import React from "react";
-
-type Product = {
-  id: number;
-  title: string;
-  ingredients: [];
-  price: number;
-  image: string;
-};
+import { Product } from "../../types/types";
 
 class Dishes extends React.Component {
   render() {
