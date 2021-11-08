@@ -133,7 +133,7 @@
         "Tomato",
         "Oil"
       ],
-      "count": 1
+      "count": 2
     },
     {
       "id": 6,
@@ -144,6 +144,39 @@
         "Meat",
         "Tomato",
         "Oil"
+      ],
+      "count": 1
+    },
+    {
+      "id": 4,
+      "title": "Cheesy Pasta",
+      "price": 18,
+      "image": "https://www.themealdb.com/images/category/lamb.png",
+      "ingredients": [
+        "Penne pasta",
+        "chicken stock",
+        "dried oregano",
+        "spinach",
+        "salt",
+        "mozzarella cheese"
+      ],
+      "count": 1
+    },
+    {
+      "id": 2,
+      "title": "Burger",
+      "price": 23,
+      "image": "https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/9:4/w_3752,h_1667,c_limit/Smashburger-recipe-120219.jpg",
+      "ingredients": [
+        "Beef",
+        "egg",
+        "onions",
+        "lettuce",
+        "tomato",
+        "mayonnaise",
+        "ketchup",
+        "salt",
+        "pepper"
       ],
       "count": 1
     }
