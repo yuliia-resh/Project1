@@ -2,7 +2,7 @@ import Dish from "./Dish/Dish";
 import styles from "./Dishes.module.scss";
 import { ProductsContext } from "../../context/productsContext";
 import React from "react";
-import { Product } from "../../types/types";
+import { ProductType } from "../../types/types";
 
 class Dishes extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class Dishes extends React.Component {
       <ProductsContext.Consumer>
         {(context) => (
           <div className={styles.dishes}>
-            {context.products.map((product: Product) => {
+            {context.products.map((product: ProductType) => {
               return (
                 <Dish
                   dish={product}

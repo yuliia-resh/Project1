@@ -1,17 +1,17 @@
-export type AppState = {
-  products: Product[];
-  cart: CartItem[];
+export type AppStateType = {
+  products: ProductType[];
+  cart: CartItemType[];
   isLoading: boolean;
   error: any;
   isCartVisible: boolean;
   getCountsOfProducts: () => number;
-  addToCart: (product: Product) => Promise<void>;
+  addToCart: (product: ProductType) => Promise<void>;
   deleteFromCart: (productId: number) => Promise<void>;
-  handleClick: () => void;
+  toggleCart: () => void;
   getTotalPrice: () => number;
 };
 
-export type Product = {
+export type ProductType = {
   id: number;
   title: string;
   ingredients: string[];
@@ -19,7 +19,7 @@ export type Product = {
   image: string;
 };
 
-export type CartItem = {
+export type CartItemType = {
   id: number;
   title: string;
   ingredients: string[];
@@ -28,7 +28,7 @@ export type CartItem = {
   count: number;
 };
 
-export type CartItemInfo = {
+export type CartItemInfoType = {
   id: number;
   title: string;
   subTotal: number;

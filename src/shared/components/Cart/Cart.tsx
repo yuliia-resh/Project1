@@ -3,22 +3,21 @@ import React from "react";
 import { ProductsContext } from "../../context/productsContext";
 import CartItem from "./CartItem/CartItem";
 import { NavLink } from "react-router-dom";
-let classNames = require('classnames');
-
-type cartItem = {
-  id: number;
-  title: string;
-  ingredients: [];
-  price: number;
-  image: string;
-  count: number;
-};
+import { CartItemType } from "../../types/types";
+let classNames = require("classnames");
 
 const totalClasses = classNames(styles.textCart, styles.borderTop);
-const textCartClasses = classNames(styles.textCart, styles.borderBottom)
+const textCartClasses = classNames(styles.textCart, styles.borderBottom);
 
 class Cart extends React.Component {
+  static contextType = ProductsContext;
+  context: React.ContextType<typeof ProductsContext>;
+
   render() {
+    const handleCloseClick = () => {
+      this.context.toggleCart();
+    };
+
     return (
       <ProductsContext.Consumer>
         {(context) => (
@@ -28,15 +27,13 @@ class Cart extends React.Component {
                 src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
                 alt="Close shopping cart"
                 onClick={() => {
-                  context.handleClick();
+                  handleCloseClick();
                 }}
               />
             </NavLink>
-            <h3 className={textCartClasses}>
-              Cart
-            </h3>
+            <h3 className={textCartClasses}>Cart</h3>
 
-            {context.cart.map((cartItem: cartItem) => {
+            {context.cart.map((cartItem: CartItemType) => {
               return (
                 <CartItem
                   key={cartItem.id}
@@ -48,11 +45,7 @@ class Cart extends React.Component {
                 />
               );
             })}
-            <h3 className={totalClasses}>
-              Total:{" "}
-              {context.getTotalPrice()}
-              $
-            </h3>
+            <h3 className={totalClasses}>Total: {context.getTotalPrice()}$</h3>
           </div>
         )}
       </ProductsContext.Consumer>

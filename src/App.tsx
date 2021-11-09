@@ -12,9 +12,9 @@ import Cart from "./shared/components/Cart/Cart";
 import Dishes from "./shared/components/Dishes/Dishes";
 import Header from "./shared/components/Header/Header";
 import { ProductsContext } from "./shared/context/productsContext";
-import { AppState, CartItem, Product } from "./shared/types/types";
+import { AppStateType, CartItemType, ProductType } from "./shared/types/types";
 
-class App extends React.Component<unknown, AppState> {
+class App extends React.Component<unknown, AppStateType> {
   constructor() {
     super({});
     this.state = {
@@ -27,16 +27,11 @@ class App extends React.Component<unknown, AppState> {
       getTotalPrice: this.getTotalPrice,
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart,
-      handleClick: this.handleClick,
+      toggleCart: this.toggleCart
     };
   }
 
-
-  // get cart() {
-  //   return this.state.cart;
-  // }
-
-  async getProductsApi(): Promise<void> {
+  getProductsApi = async (): Promise<void> => {
     this.setState({ isLoading: true });
     try {
       const { data } = await getAllProducts();
@@ -46,9 +41,9 @@ class App extends React.Component<unknown, AppState> {
     } finally {
       this.setState({ isLoading: false });
     }
-  }
+  };
 
-  async getCartProductsApi(): Promise<void> {
+  getCartProductsApi = async (): Promise<void> => {
     this.setState({ isLoading: true });
     try {
       const { data } = await getCartProducts();
@@ -58,24 +53,24 @@ class App extends React.Component<unknown, AppState> {
     } finally {
       this.setState({ isLoading: false });
     }
-  }
+  };
 
   getTotalPrice = (): number => {
-    return this.state.cart.reduce((acc: number, curr: CartItem) => {
+    return this.state.cart.reduce((acc: number, curr: CartItemType) => {
       return acc + curr.count * curr.price;
-    }, 0)
+    }, 0);
   };
 
   getCountsOfProducts = (): number => {
-    return this.state.cart.reduce((acc: number, item: CartItem) => {
+    return this.state.cart.reduce((acc: number, item: CartItemType) => {
       return acc + item.count;
-    }, 0)
-  }
+    }, 0);
+  };
 
-  addToCart = async (product: Product): Promise<void> => {
+  addToCart = async (product: ProductType): Promise<void> => {
     const newProduct = { ...product, count: 1 };
     const cartProduct = this.state.cart.find(
-      (cartProd: CartItem) => cartProd.id === product.id
+      (cartProd: CartItemType) => cartProd.id === product.id
     );
     if (!cartProduct) {
       try {
@@ -107,7 +102,7 @@ class App extends React.Component<unknown, AppState> {
     }
   };
 
-  handleClick = (): void => {
+  toggleCart = (): void => {
     this.setState({ isCartVisible: !this.state.isCartVisible });
   };
 

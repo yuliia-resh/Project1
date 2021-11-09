@@ -1,10 +1,10 @@
 import React from "react";
-import { Product } from "../../../types/types";
+import { ProductType } from "../../../types/types";
 import styles from "./Dish.module.scss";
 
 type Props = {
-  dish: Product;
-  addToCart: (dish: Product) => void;
+  dish: ProductType;
+  addToCart: (dish: ProductType) => void;
 };
 
 export class Dish extends React.Component<Props> {
