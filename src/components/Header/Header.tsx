@@ -17,8 +17,7 @@ class Header extends React.Component<{}> {
             <p className={styles.cafeName}>Cafe name</p>
 
             <Search/>
-
-
+            
             <div className={styles.cart}>
               <div onClick={() => context.handleCartClick()}>
                 {context.isCartVisible ? ( //this code need for close the shoping cart with click on the cart

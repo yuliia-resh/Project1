@@ -22,6 +22,8 @@ type State = {
   addToCart: (product: Product) => Promise<void>;
   deleteFromCart: (productId: number) => Promise<void>;
   handleCartClick: () => void;
+  handleSearch: (string: string) => void;
+  searchRequest: string;
   isCartVisible: boolean;
 };
 
@@ -55,6 +57,8 @@ class App extends React.Component<{}, State> {
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart,
       handleCartClick: this.handleCartClick,
+      handleSearch: this.handleSearch,
+      searchRequest: "",
       isCartVisible: false,
     };
   }
@@ -85,7 +89,8 @@ class App extends React.Component<{}, State> {
 
   addToCart = async (product: Product) => {
     const newObj = { ...product, count: 1 };
-    const cartProduct: any = this.state.cart.find( //I dont know which type i should use on cartProduct
+    const cartProduct: any = this.state.cart.find(
+      //I dont know which type i should use on cartProduct
       (cartProd: cartItem) => cartProd.id === product.id
     );
     if (!cartProduct) {
@@ -120,6 +125,13 @@ class App extends React.Component<{}, State> {
 
   handleCartClick = () => {
     this.setState({ isCartVisible: !this.state.isCartVisible });
+  };
+
+  handleSearch = (string: string) => {
+    const searchResult = this.state.products.filter((product: Product) => {
+      return product.title.toLowerCase().substring(0, 4).includes(string);
+    });
+    this.setState({ searchResults: searchResult, searchRequest: string });
   };
 
   componentDidMount() {

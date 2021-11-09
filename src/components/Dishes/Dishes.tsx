@@ -17,17 +17,29 @@ class Dishes extends React.Component {
       <ProductsContext.Consumer>
         {(context) => (
           <div className={styles.dishes}>
-            {context.products.map((product: Product) => {
-              return (
-                <Dish
-                  dish={product}
-                  key={product.id}
-                  addToCart={(product) => {
-                    context.addToCart(product);
-                  }}
-                />
-              );
-            })}
+            {context.searchRequest.length === 0
+              ? context.products.map((product: Product) => {
+                  return (
+                    <Dish
+                      dish={product}
+                      key={product.id}
+                      addToCart={(product) => {
+                        context.addToCart(product);
+                      }}
+                    />
+                  );
+                })
+              : context.searchResults.map((product: Product) => {
+                  return (
+                    <Dish
+                      dish={product}
+                      key={product.id}
+                      addToCart={(product) => {
+                        context.addToCart(product);
+                      }}
+                    />
+                  );
+                })}
           </div>
         )}
       </ProductsContext.Consumer>
