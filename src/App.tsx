@@ -5,108 +5,90 @@ import {
   getAllProducts,
   getCartProducts,
   postToCart,
-  updateCartProductWithId,
+  updateCartProductById,
 } from "./api";
 import "./App.css";
-import Cart from "./components/Cart/Cart";
-import Dishes from "./components/Dishes/Dishes";
-import Header from "./components/Header/Header";
-import { ProductsContext } from "./context/productsContext";
+import Cart from "./shared/components/Cart/Cart";
+import Dishes from "./shared/components/Dishes/Dishes";
+import Header from "./shared/components/Header/Header";
+import { ProductsContext } from "./shared/context/productsContext";
+import { CartItemType, ProductType, AppStateType } from "./shared/types/types";
 
-type State = {
-  products: [];
-  cart: [];
-  searchResults: Product[];
-  loading: boolean;
-  error: any;
-  addToCart: (product: Product) => Promise<void>;
-  deleteFromCart: (productId: number) => Promise<void>;
-  handleCartClick: () => void;
-  handleSearch: (string: string) => void;
-  searchRequest: string;
-  isCartVisible: boolean;
-};
-
-type Product = {
-  id: number;
-  title: string;
-  ingredients: [];
-  price: number;
-  image: string;
-};
-
-type cartItem = {
-  id: number;
-  title: string;
-  ingredients: [];
-  price: number;
-  image: string;
-  count: number;
-};
-
-class App extends React.Component<{}, State> {
-  constructor(props: any) {
-    // props type is any because we dont have any props in this component but we should use the super method for the constructor
-    super(props);
+class App extends React.Component<unknown, AppStateType> {
+  constructor() {
+    super({});
     this.state = {
       products: [],
       cart: [],
+      isCartVisible: false,
+      searchRequest: "",
       searchResults: [],
       error: null,
-      loading: false,
+      isLoading: false,
       addToCart: this.addToCart,
       deleteFromCart: this.deleteFromCart,
-      handleCartClick: this.handleCartClick,
-      handleSearch: this.handleSearch,
-      searchRequest: "",
-      isCartVisible: false,
+      toggleCartComponent: this.toggleCartComponent,
+      searchProduct: this.searchProduct,
+      getTotalPrice: this.getTotalPrice,
+      getCountsOfProducts: this.getCountsOfProducts,
     };
   }
 
-  async getProductsApi() {
-    this.setState({ loading: true });
+  getProductsApi = async (): Promise<void> => {
+    this.setState({ isLoading: true });
     try {
       const { data } = await getAllProducts();
       this.setState({ products: data });
     } catch (error) {
       console.log(error);
     } finally {
-      this.setState({ loading: false });
+      this.setState({ isLoading: false });
     }
-  }
+  };
 
-  async getCartProductsApi() {
-    this.setState({ loading: true });
+  getCartProductsApi = async (): Promise<void> => {
+    this.setState({ isLoading: true });
     try {
       const { data } = await getCartProducts();
       this.setState({ cart: data });
     } catch (error) {
       console.log(error);
     } finally {
-      this.setState({ loading: false });
+      this.setState({ isLoading: false });
     }
-  }
+  };
 
-  addToCart = async (product: Product) => {
-    const newObj = { ...product, count: 1 };
-    const cartProduct: any = this.state.cart.find(
-      //I dont know which type i should use on cartProduct
-      (cartProd: cartItem) => cartProd.id === product.id
+  getTotalPrice = (): number => {
+    return this.state.cart.reduce((acc: number, curr: CartItemType) => {
+      return acc + curr.count * curr.price;
+    }, 0);
+  };
+
+  getCountsOfProducts = (): number => {
+    return this.state.cart.reduce((acc: number, item: CartItemType) => {
+      return acc + item.count;
+    }, 0);
+  };
+
+  addToCart = async (product: ProductType): Promise<void> => {
+    const newProduct = { ...product, count: 1 };
+    const cartProduct = this.state.cart.find(
+      (cartProd: CartItemType) => cartProd.id === product.id
     );
     if (!cartProduct) {
       try {
-        await postToCart(newObj);
+        await postToCart(newProduct);
         await this.getCartProductsApi();
       } catch (error) {
         console.log(error);
       }
     } else {
       try {
-        const updatedObj = {
+        const updatedProduct = {
           ...cartProduct,
           count: cartProduct.count + 1,
         };
-        await updateCartProductWithId(updatedObj);
+        await updateCartProductById(updatedProduct);
         await this.getCartProductsApi();
       } catch (error) {
         console.log(error);
@@ -114,7 +96,7 @@ class App extends React.Component<{}, State> {
     }
   };
 
-  deleteFromCart = async (productId: number) => {
+  deleteFromCart = async (productId: number): Promise<void> => {
     try {
       await deleteCartProduct(productId);
       await this.getCartProductsApi();
@@ -123,18 +105,18 @@ class App extends React.Component<{}, State> {
     }
   };
 
-  handleCartClick = () => {
+  toggleCartComponent = (): void => {
     this.setState({ isCartVisible: !this.state.isCartVisible });
   };
 
-  handleSearch = (string: string) => {
-    const searchResult = this.state.products.filter((product: Product) => {
+  searchProduct = (string: string): void => {
+    const searchResult = this.state.products.filter((product: ProductType) => {
       return product.title.toLowerCase().substring(0, 4).includes(string);
     });
     this.setState({ searchResults: searchResult, searchRequest: string });
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.getCartProductsApi();
     this.getProductsApi();
   }

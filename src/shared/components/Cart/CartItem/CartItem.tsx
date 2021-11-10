@@ -1,7 +1,8 @@
 import styles from "./CartItem.module.scss";
 import React from "react";
+import { CartItemInfoType } from "../../../types/types";
 
-class CartItem extends React.Component<any> {
+class CartItem extends React.Component<CartItemInfoType> {
   render() {
     const { id, title, subTotal, quantity, deleteFromCart } = this.props;
 
