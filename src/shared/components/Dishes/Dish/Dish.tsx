@@ -1,17 +1,13 @@
 import React from "react";
+import { ProductType } from "../../../types/types";
 import styles from "./Dish.module.scss";
+let classNames = require("classnames");
 
-type Product = {
-  id: number;
-  title: string;
-  ingredients: [];
-  price: number;
-  image: string;
-};
+const buttonClasses = classNames(styles.button, styles.gradient);
 
 type Props = {
-  dish: Product;
-  addToCart: (dish: Product) => void;
+  dish: ProductType;
+  addToCart: (dish: ProductType) => void;
 };
 
 export class Dish extends React.Component<Props> {
@@ -29,15 +25,18 @@ export class Dish extends React.Component<Props> {
         <div className={styles.ingredients}>
           <p>{productIngredients}</p>
         </div>
-        <button
-          type="button"
-          className={`${styles.button} ${styles.gradient}`}
-          onClick={() => {
-            addToCart(dish);
-          }}
-        >
-          Add to cart
-        </button>
+
+        <div className={styles.buttonOnBottom}>
+          <button
+            type="button"
+            className={buttonClasses}
+            onClick={() => {
+              addToCart(dish);
+            }}
+          >
+            Add to cart
+          </button>
+        </div>
       </div>
     );
   }

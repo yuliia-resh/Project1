@@ -13,6 +13,7 @@ import Dishes from "./shared/components/Dishes/Dishes";
 import Header from "./shared/components/Header/Header";
 import { ProductsContext } from "./shared/context/productsContext";
 import { CartItemType, ProductType, AppStateType } from "./shared/types/types";
+import Loading from "./shared/components/Loading/Loading";
 
 class App extends React.Component<unknown, AppStateType> {
   constructor() {
@@ -47,14 +48,11 @@ class App extends React.Component<unknown, AppStateType> {
   };
 
   getCartProductsApi = async (): Promise<void> => {
-    this.setState({ isLoading: true });
     try {
       const { data } = await getCartProducts();
       this.setState({ cart: data });
     } catch (error) {
       console.log(error);
-    } finally {
-      this.setState({ isLoading: false });
     }
   };
 
@@ -110,10 +108,21 @@ class App extends React.Component<unknown, AppStateType> {
   };
 
   searchProduct = (string: string): void => {
-    const searchResult = this.state.products.filter((product: ProductType) => {
-      return product.title.toLowerCase().substring(0, 4).includes(string);
+    this.setState({ isLoading: true });
+
+    const searchResults = this.state.products.filter((product: ProductType) => {
+      return (
+        product.ingredients.find((ingerdient: string) =>
+          ingerdient.toLowerCase().includes(string)
+        ) || product.title.toLowerCase().includes(string)
+      );
     });
-    this.setState({ searchResults: searchResult, searchRequest: string });
+
+    this.setState({
+      searchResults: searchResults,
+      searchRequest: string,
+      isLoading: false,
+    });
   };
 
   componentDidMount(): void {
@@ -130,7 +139,7 @@ class App extends React.Component<unknown, AppStateType> {
             <Routes>
               <Route path="/cart" element={<Cart />} />
             </Routes>
-            <Dishes />
+            {this.state.isLoading ? <Loading /> : <Dishes />}
           </div>
         </ProductsContext.Provider>
       </BrowserRouter>

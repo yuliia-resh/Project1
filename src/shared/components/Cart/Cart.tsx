@@ -22,7 +22,7 @@ class Cart extends React.Component {
       <ProductsContext.Consumer>
         {(context) => (
           <div className={styles.cart}>
-            <div className={styles.pin}>
+            <div>
               <NavLink to="/">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
