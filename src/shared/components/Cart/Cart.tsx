@@ -1,5 +1,5 @@
 import styles from "./Cart.module.scss";
-import React from "react";
+import { useContext } from "react";
 import { ProductsContext } from "../../context/productsContext";
 import CartItem from "./CartItem/CartItem";
 import { NavLink } from "react-router-dom";
@@ -9,48 +9,41 @@ let classNames = require("classnames");
 const totalClasses = classNames(styles.textCart, styles.borderTop);
 const textCartClasses = classNames(styles.textCart, styles.borderBottom);
 
-class Cart extends React.Component {
-  static contextType = ProductsContext;
-  context: React.ContextType<typeof ProductsContext>;
+function Cart() {
+  const context = useContext(ProductsContext);
 
-  render() {
-    const handleCloseClick = () => {
-      this.context.toggleCartComponent();
-    };
+  const handleCloseClick = () => {
+    context.toggleCartComponent();
+  };
 
-    return (
-      <ProductsContext.Consumer>
-        {(context) => (
-          <div className={styles.cart}>
-            <div>
-              <NavLink to="/">
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
-                  alt="Close shopping cart"
-                  onClick={handleCloseClick}
-                />
-              </NavLink>
-              <h3 className={textCartClasses}>Cart</h3>
-            </div>
+  return (
+    <div className={styles.cart}>
+      <div>
+        <NavLink to="/">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
+            alt="Close shopping cart"
+            onClick={handleCloseClick}
+          />
+        </NavLink>
+        <h3 className={textCartClasses}>Cart</h3>
+      </div>
 
-            {context.cart.map((cartItem: CartItemType) => {
-              return (
-                <CartItem
-                  key={cartItem.id}
-                  id={cartItem.id}
-                  title={cartItem.title}
-                  quantity={cartItem.count}
-                  subTotal={cartItem.price * cartItem.count}
-                  deleteFromCart={context.deleteFromCart}
-                />
-              );
-            })}
-            <h3 className={totalClasses}>Total: {context.getTotalPrice()}$</h3>
-          </div>
-        )}
-      </ProductsContext.Consumer>
-    );
-  }
+      {context.shopingCart.map((cartItem: CartItemType) => {
+        return (
+          <CartItem
+            key={cartItem.id}
+            id={cartItem.id}
+            title={cartItem.title}
+            quantity={cartItem.count}
+            subTotal={cartItem.price * cartItem.count}
+            deleteFromCart={context.deleteFromCart}
+          />
+        );
+      })}
+      <h3 className={totalClasses}>Total: {context.getTotalPrice()}$</h3>
+    </div>
+  );
 }
 
 export default Cart;
