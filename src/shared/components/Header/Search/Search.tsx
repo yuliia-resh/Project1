@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
-import { ProductsContext } from "../../../context/productsContext";
+import React from "react";
+import { connect } from "../../../connect";
 import styles from "./Search.module.scss";
 
-function Search() {
-  const context = useContext(ProductsContext);
+function Search(props: any) {
+  //need to fix
+  const { store } = props;
 
   const searchValue = React.createRef<HTMLInputElement>();
 
@@ -17,10 +18,10 @@ function Search() {
         autoFocus
         required
         ref={searchValue}
-        onKeyUp={() => context.searchProduct(searchValue.current?.value)}
+        onKeyUp={() => store.searchProduct(searchValue.current?.value)}
       />
     </form>
   );
 }
 
-export default Search;
+export default connect(Search);

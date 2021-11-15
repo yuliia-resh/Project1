@@ -1,46 +1,34 @@
+import React from "react";
+
 import Dish from "./Dish/Dish";
 import styles from "./Dishes.module.scss";
-import { ProductsContext } from "../../context/productsContext";
-import { ProductType } from "../../types/types";
-import { useContext } from "react";
+import { ProductType, PropsType } from "../../types/types";
+import { connect } from "../../connect";
 
-function Dishes() {
-  const context = useContext(ProductsContext);
+class Dishes extends React.Component<PropsType> {
+  render() {
+    const { store } = this.props;
+    return (
+      <div className={styles.dishes}>
+        {store.searchRequest.length > 0 && store.searchResults.length === 0 && (
+          <div className={styles.noResults}>
+            <p>No results found. Try another request.</p>
+          </div>
+        )}
 
-  return (
-    <div className={styles.dishes}>
-      {context.searchRequest.length === 0 ? ( // I need to rewrite this piece of code, but expressions with IF don't work. How can I do this?
-        context.productsList.map((product: ProductType) => {
-          return (
+        {store.searchResults.length > 0 &&
+          store.searchResults.map((product: ProductType) => (
             <Dish
               dish={product}
               key={product.id}
-              addToCart={(product) => {
-                context.addToCart(product);
+              addToCart={(product: ProductType) => {
+                store.addToCart(product);
               }}
             />
-          );
-        })
-      ) : context.searchRequest.length > 0 &&
-        context.searchResults.length > 0 ? (
-        context.searchResults.map((product: ProductType) => {
-          return (
-            <Dish
-              dish={product}
-              key={product.id}
-              addToCart={(product) => {
-                context.addToCart(product);
-              }}
-            />
-          );
-        })
-      ) : (
-        <div className={styles.noResults}>
-          <p>No results found. Try another request.</p>
-        </div>
-      )}
-    </div>
-  );
+          ))}
+      </div>
+    );
+  }
 }
 
-export default Dishes;
+export default connect(Dishes);

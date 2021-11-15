@@ -1,14 +1,14 @@
-import styles from "./Header.module.scss";
-import { useContext } from "react";
-import { ProductsContext } from "../../context/productsContext";
 import { NavLink } from "react-router-dom";
+import { connect } from "../../connect";
+import { PropsType } from "../../types/types";
+import styles from "./Header.module.scss";
 import Search from "./Search/Search";
 
-function Header() {
-  const context = useContext(ProductsContext);
+function Header(props: PropsType) {
+  const { store } = props;
 
   const handleCartClick = () => {
-    context.toggleCartComponent();
+    store.toggleCartComponent();
   };
 
   return (
@@ -19,7 +19,7 @@ function Header() {
 
       <div className={styles.cart}>
         <div onClick={handleCartClick}>
-          <NavLink to={context.isCartVisible ? "/cart" : "/"}>
+          <NavLink to={store.isCartVisible ? "/cart" : "/"}>
             <img
               src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-4.jpg"
               alt="Cart"
@@ -27,10 +27,10 @@ function Header() {
           </NavLink>
         </div>
 
-        <p>{context.getCountsOfProducts()}</p>
+        <p>{store.getCountsOfProducts()}</p>
       </div>
     </div>
   );
 }
 
-export default Header;
+export default connect(Header);
