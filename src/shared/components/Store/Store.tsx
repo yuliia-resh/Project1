@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { useToggle } from "rooks";
 import {
   deleteCartProductApi,
   getAllProductsApi,
@@ -14,10 +15,19 @@ import { CartItemType, ContextType, ProductType } from "../../types/types";
 function Store(props: any) {
   const [productsList, setProductsList] = useState([]);
   const [shopingCart, setShopingCart] = useState([]);
-  const [isCartVisible, setCartVisible] = useState(false);
   const [searchRequest, setSearchRequest] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useToggle(false);
+  const [isCartVisible, setCartVisible] = useToggle(false);
+
+  const toggle = (setSomething: any) => {
+    if (setSomething === setLoading) {
+      setLoading(!isLoading);
+    }
+    if (setSomething === setCartVisible) {
+      setCartVisible(!isCartVisible);
+    }
+  };
 
   const getProducts = async (): Promise<any> => {
     const result = {
@@ -25,7 +35,7 @@ function Store(props: any) {
       error: null,
     };
 
-    setLoading(true);
+    toggle(setLoading);
     try {
       const { data } = await getAllProductsApi();
       setProductsList(data);
@@ -34,7 +44,7 @@ function Store(props: any) {
       console.log(error);
       result.error = error;
     } finally {
-      setLoading(false);
+      toggle(setLoading);
       return result;
     }
   };
@@ -105,11 +115,11 @@ function Store(props: any) {
   };
 
   const toggleCartComponent = (): void => {
-    setCartVisible(!isCartVisible);
+    toggle(setCartVisible);
   };
 
   const searchProduct = (string: string): void => {
-    setLoading(true);
+    toggle(setLoading);
 
     const searchResults = productsList.filter((product: ProductType) => {
       return (
@@ -121,7 +131,7 @@ function Store(props: any) {
 
     setSearchResults(searchResults);
     setSearchRequest(string);
-    setLoading(false);
+    toggle(setLoading);
   };
 
   const getContext = (): ContextType => {

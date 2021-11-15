@@ -3,7 +3,7 @@ import { connect } from "../../connect";
 import { CartItemType, PropsType } from "../../types/types";
 import styles from "./Cart.module.scss";
 import CartItem from "./CartItem/CartItem";
-let classNames = require("classnames");
+import classNames from "classnames";
 
 const totalClasses = classNames(styles.textCart, styles.borderTop);
 const textCartClasses = classNames(styles.textCart, styles.borderBottom);

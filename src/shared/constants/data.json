@@ -124,25 +124,6 @@
   ],
   "cart": [
     {
-      "id": 5,
-      "title": "Miscellaneous",
-      "price": 10,
-      "image": "https://www.themealdb.com/images/category/miscellaneous.png",
-      "ingredients": [
-        "Meat",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Sugar",
-        "Oil"
-      ],
-      "count": 1
-    },
-    {
       "id": 3,
       "title": "Dessert",
       "price": 35,
