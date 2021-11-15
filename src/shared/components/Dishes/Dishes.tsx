@@ -10,35 +10,22 @@ class Dishes extends React.Component<PropsType> {
     const { store } = this.props;
     return (
       <div className={styles.dishes}>
-        {store.searchRequest.length === 0 ? ( // I need to rewrite this piece of code, but expressions with IF don't work. How can I do this?
-          store.products.map((product: ProductType) => {
-            return (
-              <Dish
-                dish={product}
-                key={product.id}
-                addToCart={(product: ProductType) => {
-                  store.addToCart(product);
-                }}
-              />
-            );
-          })
-        ) : store.searchRequest.length > 0 && store.searchResults.length > 0 ? (
-          store.searchResults.map((product: ProductType) => {
-            return (
-              <Dish
-                dish={product}
-                key={product.id}
-                addToCart={(product: ProductType) => {
-                  store.addToCart(product);
-                }}
-              />
-            );
-          })
-        ) : (
+        {store.searchRequest.length > 0 && store.searchResults.length === 0 && (
           <div className={styles.noResults}>
             <p>No results found. Try another request.</p>
           </div>
         )}
+
+        {store.searchResults.length > 0 &&
+          store.searchResults.map((product: ProductType) => (
+            <Dish
+              dish={product}
+              key={product.id}
+              addToCart={(product: ProductType) => {
+                store.addToCart(product);
+              }}
+            />
+          ))}
       </div>
     );
   }

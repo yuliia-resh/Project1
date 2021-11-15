@@ -29,24 +29,41 @@ export default class Store extends React.Component<unknown, StoreStateType> {
     };
   }
 
-  getProducts = async (): Promise<void> => {
+  getProducts = async (): Promise<any> => {
+    const result = {
+      payload: null,
+      error: null,
+    };
+
     this.setState({ isLoading: true });
     try {
       const { data } = await getAllProductsApi();
       this.setState({ products: data });
-    } catch (error) {
+      result.payload = data;
+    } catch (error: any) {
       console.log(error);
+      result.error = error;
     } finally {
       this.setState({ isLoading: false });
+      return result;
     }
   };
 
-  getCartProducts = async (): Promise<void> => {
+  getCartProducts = async (): Promise<any> => {
+    const result = {
+      payload: null,
+      error: null,
+    };
+
     try {
       const { data } = await getCartProductsApi();
       this.setState({ cart: data });
-    } catch (error) {
+      result.payload = data;
+    } catch (error: any) {
       console.log(error);
+      result.error = error;
+    } finally {
+      return result;
     }
   };
 
@@ -134,6 +151,10 @@ export default class Store extends React.Component<unknown, StoreStateType> {
   componentDidMount() {
     this.getProducts();
     this.getCartProducts();
+
+    this.getProducts().then((result) =>
+      this.setState({ searchResults: result.payload })
+    );
   }
 
   render() {
