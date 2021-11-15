@@ -1,6 +1,7 @@
 import React from "react";
+
 import styles from "./Loading.module.scss";
-let classNames = require("classnames");
+import classNames from "classnames";
 
 const loadingStyles = classNames(styles.spinnerGrow, styles.textInfo);
 

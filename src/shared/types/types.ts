@@ -1,4 +1,14 @@
-export type AppStateType = {
+export type StoreStateType = {
+  products: ProductType[];
+  cart: CartItemType[];
+  isLoading: boolean;
+  error: any;
+  isCartVisible: boolean;
+  searchResults: ProductType[];
+  searchRequest: string;
+};
+
+export type ContextType = {
   products: ProductType[];
   cart: CartItemType[];
   isLoading: boolean;
@@ -10,8 +20,12 @@ export type AppStateType = {
   deleteFromCart: (productId: number) => Promise<void>;
   toggleCartComponent: () => void;
   searchProduct: (string: string) => void;
-  getCountsOfProducts: () => number;
   getTotalPrice: () => number;
+  getCountsOfProducts: () => number;
+};
+
+export type PropsType = {
+  store: ContextType;
 };
 
 export type ProductType = {

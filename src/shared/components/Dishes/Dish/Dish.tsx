@@ -1,16 +1,18 @@
 import React from "react";
+
 import { ProductType } from "../../../types/types";
 import styles from "./Dish.module.scss";
-let classNames = require("classnames");
+import classNames from "classnames";
+import { connect } from "../../../connect";
 
 const buttonClasses = classNames(styles.button, styles.gradient);
 
-type Props = {
+type DishPropsType = {
   dish: ProductType;
   addToCart: (dish: ProductType) => void;
 };
 
-export class Dish extends React.Component<Props> {
+export class Dish extends React.Component<DishPropsType> {
   render() {
     const { dish, addToCart } = this.props;
     const productIngredients = dish.ingredients.join(", ");
@@ -42,4 +44,4 @@ export class Dish extends React.Component<Props> {
   }
 }
 
-export default Dish;
+export default connect(Dish);

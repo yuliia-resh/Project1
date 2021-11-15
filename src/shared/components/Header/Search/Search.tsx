@@ -1,29 +1,29 @@
 import React from "react";
-import { ProductsContext } from "../../../context/productsContext";
+
+import { connect } from "../../../connect";
+import { PropsType } from "../../../types/types";
 import styles from "./Search.module.scss";
 
-class Search extends React.Component {
+class Search extends React.Component<PropsType> {
+  searchString = React.createRef<HTMLInputElement>();
+
   render() {
-    const searchValue = React.createRef<HTMLInputElement>();
+    const { store } = this.props;
     return (
-      <ProductsContext.Consumer>
-        {(context) => (
-          <form>
-            <input
-              className={styles.input}
-              id="search"
-              type="search"
-              placeholder="Search by name or ingredient..."
-              autoFocus
-              required
-              ref={searchValue}
-              onKeyUp={() => context.searchProduct(searchValue.current?.value)}
-            />
-          </form>
-        )}
-      </ProductsContext.Consumer>
+      <form>
+        <input
+          className={styles.input}
+          id="search"
+          type="search"
+          placeholder="Search by name or ingredient..."
+          autoFocus
+          required
+          ref={this.searchString}
+          onKeyUp={() => store.searchProduct(this.searchString.current!.value)}
+        />
+      </form>
     );
   }
 }
 
-export default Search;
+export default connect(Search);

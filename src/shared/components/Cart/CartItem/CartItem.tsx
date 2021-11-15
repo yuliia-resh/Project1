@@ -1,5 +1,6 @@
-import styles from "./CartItem.module.scss";
 import React from "react";
+
+import styles from "./CartItem.module.scss";
 import { CartItemInfoType } from "../../../types/types";
 
 class CartItem extends React.Component<CartItemInfoType> {
