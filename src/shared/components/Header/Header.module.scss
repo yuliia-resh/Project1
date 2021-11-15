@@ -1,0 +1,35 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  width: 98%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: solid 1px black;
+  img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.cafeName {
+  color: black;
+  font-size: 17pt;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+.cart {
+  display: flex;
+  img:hover {
+    cursor: pointer;
+  }
+  p {
+    border: 3px solid rgb(255, 0, 0);
+    border-radius: 40%;
+    background-color: rgb(255, 0, 0);
+  }
+}

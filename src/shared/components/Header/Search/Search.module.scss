@@ -1,0 +1,33 @@
+:root {
+  --rad: 0.7rem;
+  --dur: 0.3s;
+  --color-dark: #2f2f2f;
+  --color-light: rgb(230, 230, 230);
+  --color-brand: #57bd84;
+  --font-fam: "Lato", sans-serif;
+  --height: 3rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+.input {
+  width: 35vw;
+  height: var(--height);
+  font-family: var(--font-fam);
+  border: 0;
+  color: var(--color-dark);
+  font-size: 2vw;
+  background: var(--color-brand);
+  border-radius: var(--rad);
+  border-color: dimgrey;
+}
+
+.input[type="search"] {
+  outline: 0;
+  background: var(--color-light);
+  padding: 0 1.6rem;
+  border-radius: var(--rad);
+  appearance: none; //for iOS input[type="search"] roundedness issue. border-radius alone doesn't work
+  z-index: 1;
+  position: relative;
+}

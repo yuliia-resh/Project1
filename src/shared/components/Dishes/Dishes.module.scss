@@ -1,0 +1,15 @@
+.dishes {
+  padding: 15px 4%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.noResults {
+  height: 80vh;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  font-size: 25px;
+}
