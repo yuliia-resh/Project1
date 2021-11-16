@@ -29,7 +29,7 @@ function Store(props: any) {
     }
   };
 
-  const getProducts = async (): Promise<any> => {
+  const getProducts = async (search: string): Promise<any> => {
     const result = {
       payload: null,
       error: null,
@@ -38,6 +38,9 @@ function Store(props: any) {
     toggle(setLoading);
     try {
       const { data } = await getAllProductsApi();
+
+      if (!search) return data;
+
       setProductsList(data);
       result.payload = data;
     } catch (error: any) {
