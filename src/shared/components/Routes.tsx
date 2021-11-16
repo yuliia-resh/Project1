@@ -21,9 +21,8 @@ export class Routes extends React.Component<PropsType> {
 
           <BrowserRoutes>
             <Route path="/cart" element={<Cart />} />
+            <Route path="/" element={<Dishes />} />
           </BrowserRoutes>
-
-          {this.props.store.isLoading ? <Loading /> : <Dishes />}
         </div>
       </BrowserRouter>
     );

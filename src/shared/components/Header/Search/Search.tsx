@@ -1,12 +1,17 @@
-import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { connect } from "../../../connect";
 import styles from "./Search.module.scss";
 
-function Search(props: any) {
-  //need to fix
-  const { store } = props;
-
+export default function Search(props: any) {
   const searchValue = React.createRef<HTMLInputElement>();
+  const [value, setValue] = useState("");
+  const history = useHistory();
+  const location = useLocation();
+
+  useEffect(() => {
+    history.push(`${location?.pathname}?${stringsearch}`);
+  }, [value]);
 
   return (
     <form>
@@ -18,10 +23,9 @@ function Search(props: any) {
         autoFocus
         required
         ref={searchValue}
-        onKeyUp={() => store.searchProduct(searchValue.current?.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
     </form>
   );
 }
-
-export default connect(Search);
