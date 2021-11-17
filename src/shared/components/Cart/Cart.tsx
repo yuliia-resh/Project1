@@ -11,10 +11,6 @@ const textCartClasses = classNames(styles.textCart, styles.borderBottom);
 function Cart(props: PropsType) {
   const { store } = props;
 
-  const handleCloseClick = () => {
-    store.toggleCartComponent();
-  };
-
   return (
     <div className={styles.cart}>
       <div>
@@ -22,7 +18,6 @@ function Cart(props: PropsType) {
           <img
             src="https://cdn-icons-png.flaticon.com/512/61/61155.png"
             alt="Close shopping cart"
-            onClick={handleCloseClick}
           />
         </NavLink>
         <h3 className={textCartClasses}>Cart</h3>

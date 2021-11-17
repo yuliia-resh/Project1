@@ -1,24 +1,15 @@
 export type ContextType = {
-  productsList: ProductType[];
   shopingCart: CartItemType[];
-  isLoading: boolean;
-  isCartVisible: boolean;
-  searchResults: ProductType[];
   searchRequest: string;
   addToCart: (product: ProductType) => Promise<void>;
   deleteFromCart: (productId: number) => Promise<void>;
-  toggleCartComponent: () => void;
-  searchProduct: (string: string) => void;
   getCountsOfProducts: () => number;
   getTotalPrice: () => number;
+  getProducts: (search: string) => Promise<any>;
 };
 
 export type StoreStateType = {
-  productsList: ProductType[];
   shopingCart: CartItemType[];
-  isLoading: boolean;
-  isCartVisible: boolean;
-  searchResults: ProductType[];
   searchRequest: string;
 };
 

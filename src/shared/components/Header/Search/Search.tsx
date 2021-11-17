@@ -2,15 +2,17 @@ import { useHistory, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { connect } from "../../../connect";
 import styles from "./Search.module.scss";
+import { PropsType } from "../../../types/types";
 
-export default function Search(props: any) {
-  const searchValue = React.createRef<HTMLInputElement>();
+function Search(props: PropsType) {
+  const { store } = props;
   const [value, setValue] = useState("");
   const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
-    history.push(`${location?.pathname}?${stringsearch}`);
+    history.push(`${location?.pathname}?search=${value}`);
+    // store.searchRequest = value;
   }, [value]);
 
   return (
@@ -22,10 +24,13 @@ export default function Search(props: any) {
         placeholder="Search by name or ingredient..."
         autoFocus
         required
-        ref={searchValue}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
       />
     </form>
   );
 }
+
+export default connect(Search);

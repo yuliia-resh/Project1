@@ -22,3 +22,15 @@ export const updateCartProductByIdApi = (updatedProduct: CartItemType) => {
 export const deleteCartProductApi = (productId: number) => {
   return axios.delete(`${BASE_URL}/cart/${productId}`);
 };
+
+export const searchProductsApi = async (search: string) => {
+  const { data } = await getAllProductsApi();
+
+  return data.filter((product: ProductType) => {
+    return (
+      product.ingredients.find((ingerdient: string) =>
+        ingerdient.toLowerCase().includes(search)
+      ) || product.title.toLowerCase().includes(search)
+    );
+  });
+};
