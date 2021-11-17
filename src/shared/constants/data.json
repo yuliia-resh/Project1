@@ -124,6 +124,37 @@
   ],
   "cart": [
     {
+      "id": 1,
+      "title": "Raspberry waffle",
+      "price": 12,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkSxj_nkffcX8QTSQcvFo7BJnScZCIWD6e9w&usqp=CAU",
+      "ingredients": [
+        "Raspberries",
+        "milk",
+        "coconut oil",
+        "flour",
+        "eggs",
+        "lemon juice",
+        "syrup"
+      ],
+      "count": 1
+    },
+    {
+      "id": 4,
+      "title": "Cheesy Pasta",
+      "price": 18,
+      "image": "https://www.themealdb.com/images/category/lamb.png",
+      "ingredients": [
+        "Penne pasta",
+        "chicken stock",
+        "dried oregano",
+        "spinach",
+        "salt",
+        "mozzarella cheese"
+      ],
+      "count": 1
+    },
+    {
       "id": 3,
       "title": "Dessert",
       "price": 35,
@@ -134,24 +165,6 @@
         "Oil"
       ],
       "count": 5
-    },
-    {
-      "id": 2,
-      "title": "Burger",
-      "price": 23,
-      "image": "https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/9:4/w_3752,h_1667,c_limit/Smashburger-recipe-120219.jpg",
-      "ingredients": [
-        "Beef",
-        "egg",
-        "onions",
-        "lettuce",
-        "tomato",
-        "mayonnaise",
-        "ketchup",
-        "salt",
-        "pepper"
-      ],
-      "count": 3
     }
   ]
 }

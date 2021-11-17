@@ -1,11 +1,11 @@
 .cart {
   position: fixed;
   overflow-y: scroll;
-  height: calc(100vh - 90px);
+  top: 90px;
   right: 0;
-  width: 20%;
   background-color: rgba(155, 163, 163, 0.753);
   padding: 10px;
+
   img {
     object-fit: contain;
     left: 0;
@@ -36,4 +36,17 @@
 .borderBottom {
   border-bottom: 1px solid black;
   margin-bottom: 10px;
+}
+
+.slideIn {
+  opacity: 0;
+  transition: all 0.75s ease;
+  height: 0;
+  width: 0;
+}
+
+.show {
+  opacity: 1;
+  width: 20%;
+  height: calc(100vh - 90px);
 }

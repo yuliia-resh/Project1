@@ -1,4 +1,3 @@
-import "./App.css";
 import Store from "./shared/components/Store/Store";
 import Routes from "./shared/components/Routes";
 

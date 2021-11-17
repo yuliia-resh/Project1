@@ -1,8 +1,13 @@
 import styles from "./CartItem.module.scss";
-import { CartItemInfoType } from "../../../types/types";
 
-function CartItem(props: CartItemInfoType) {
-  const { id, title, subTotal, quantity, deleteFromCart } = props;
+interface Props {
+  item: { id: number; title: string; subTotal: number; quantity: number };
+  onDeleteFromCart: (id: number) => void;
+}
+
+function CartItem(props: Props) {
+  const { item, onDeleteFromCart } = props;
+  const { id, title, subTotal, quantity } = item;
 
   return (
     <div className={styles.cartItem}>
@@ -12,7 +17,7 @@ function CartItem(props: CartItemInfoType) {
           src="https://www.pngall.com/wp-content/uploads/5/Delete-Bin-Trash-Transparent.png"
           alt="Trash bin"
           onClick={() => {
-            deleteFromCart(id);
+            onDeleteFromCart(id);
           }}
         />
       </div>

@@ -6,11 +6,11 @@ const buttonClasses = classNames(styles.button, styles.gradient);
 
 type Props = {
   dish: ProductType;
-  addToCart: (dish: ProductType) => void;
+  onAddToCart: (dish: ProductType) => void;
 };
 
 function Dish(props: Props) {
-  const { dish, addToCart } = props;
+  const { dish, onAddToCart } = props;
   const productIngredients = dish.ingredients.join(", ");
 
   return (
@@ -29,7 +29,7 @@ function Dish(props: Props) {
           type="button"
           className={buttonClasses}
           onClick={() => {
-            addToCart(dish);
+            onAddToCart(dish);
           }}
         >
           Add to cart

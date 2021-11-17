@@ -1,8 +1,10 @@
 export type ContextType = {
   shopingCart: CartItemType[];
   searchRequest: string;
-  addToCart: (product: ProductType) => Promise<void>;
-  deleteFromCart: (productId: number) => Promise<void>;
+  isCartVisible: boolean;
+  toggleCart: () => void;
+  onAddToCart: (product: ProductType) => Promise<void>;
+  onDeleteFromCart: (productId: number) => Promise<void>;
   getCountsOfProducts: () => number;
   getTotalPrice: () => number;
   getProducts: (search: string) => Promise<any>;
@@ -28,14 +30,6 @@ export type CartItemType = {
   price: number;
   image: string;
   count: number;
-};
-
-export type CartItemInfoType = {
-  id: number;
-  title: string;
-  subTotal: number;
-  quantity: number;
-  deleteFromCart: (id: number) => void;
 };
 
 export type PropsType = {

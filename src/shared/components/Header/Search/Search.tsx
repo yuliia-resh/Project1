@@ -1,19 +1,17 @@
 import { useHistory, useLocation } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { connect } from "../../../connect";
+import { useCallback, useEffect, useState } from "react";
+import queryStirng from "query-string";
 import styles from "./Search.module.scss";
-import { PropsType } from "../../../types/types";
 
-function Search(props: PropsType) {
-  const { store } = props;
-  const [value, setValue] = useState("");
+function Search() {
   const history = useHistory();
   const location = useLocation();
 
-  useEffect(() => {
-    history.push(`${location?.pathname}?search=${value}`);
-    // store.searchRequest = value;
-  }, [value]);
+  const handleChage = useCallback((e: any) => {
+    history.push(`${location?.pathname}?search=${e.target.value}`);
+  }, []);
+
+  const query = queryStirng.parse(location.search);
 
   return (
     <form>
@@ -24,13 +22,11 @@ function Search(props: PropsType) {
         placeholder="Search by name or ingredient..."
         autoFocus
         required
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
+        value={query.search as string}
+        onChange={handleChage}
       />
     </form>
   );
 }
 
-export default connect(Search);
+export default Search;

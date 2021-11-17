@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { useToggle } from "rooks";
 import {
   deleteCartProductApi,
   getAllProductsApi,
   getCartProductsApi,
   postToCartApi,
-  searchProductsApi,
   updateCartProductByIdApi,
 } from "../../../api";
 import { connect } from "../../connect";
@@ -15,8 +13,8 @@ import { CartItemType, ContextType, ProductType } from "../../types/types";
 
 function Store(props: any) {
   const [shopingCart, setShopingCart] = useState([]);
-  const [searchRequest, setSearchRequest] = useState("");
-  // const [isCartVisible, setCartVisible] = useToggle(false);
+  const [isCartVisible, setIsCartVisible] = useState(false);
+  const searchRequest: string = "";
 
   const getCartProducts = async (): Promise<any> => {
     const result = {
@@ -48,7 +46,7 @@ function Store(props: any) {
     }, 0);
   };
 
-  const addToCart = async (product: ProductType): Promise<void> => {
+  const onAddToCart = async (product: ProductType): Promise<void> => {
     const newProduct = { ...product, count: 1 };
     const cartProduct: any = shopingCart.find(
       (cartProd: CartItemType) => cartProd.id === product.id
@@ -74,7 +72,7 @@ function Store(props: any) {
     }
   };
 
-  const deleteFromCart = async (productId: number): Promise<void> => {
+  const onDeleteFromCart = async (productId: number): Promise<void> => {
     try {
       await deleteCartProductApi(productId);
       await getCartProducts();
@@ -91,10 +89,15 @@ function Store(props: any) {
 
     try {
       const { data } = await getAllProductsApi();
-
       if (!search) result.payload = data;
       else {
-        const searchResults = await searchProductsApi(search);
+        const searchResults = data.filter((product: ProductType) => {
+          return (
+            product.ingredients.find((ingerdient: string) =>
+              ingerdient.toLowerCase().includes(search)
+            ) || product.title.toLowerCase().includes(search)
+          );
+        });
         result.payload = searchResults;
       }
     } catch (error: any) {
@@ -104,12 +107,19 @@ function Store(props: any) {
       return result;
     }
   };
+
+  const toggleCart = () => {
+    setIsCartVisible(!isCartVisible);
+  };
+
   const getContext = (): ContextType => {
     return {
       shopingCart: shopingCart,
       searchRequest: searchRequest,
-      addToCart: addToCart,
-      deleteFromCart: deleteFromCart,
+      isCartVisible: isCartVisible,
+      toggleCart: toggleCart,
+      onAddToCart: onAddToCart,
+      onDeleteFromCart: onDeleteFromCart,
       getTotalPrice: getTotalPrice,
       getCountsOfProducts: getCountsOfProducts,
       getProducts: getProducts,

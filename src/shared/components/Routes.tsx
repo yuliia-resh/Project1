@@ -1,17 +1,16 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import Cart from "./Cart/Cart";
-import Dishes from "./Dishes/Dishes";
-import Header from "./Header/Header";
+import "../../App.css";
 import { connect } from "../connect";
+import Header from "./Header/Header";
+import Home from "./Home/Home";
 
 function Routes() {
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Route path="/cart"> {<Cart />} </Route>
-        <Route path="/"> {<Dishes />} </Route>
+        <Home />
       </div>
     </BrowserRouter>
   );
