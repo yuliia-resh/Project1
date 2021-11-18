@@ -6,10 +6,10 @@ import {
   getCartProductsApi,
   postToCartApi,
   updateCartProductByIdApi,
-} from "../../../api";
-import { connect } from "../../connect";
-import { StoreContext } from "../../context/storeContext";
-import { CartItemType, ContextType, ProductType } from "../../types/types";
+} from "../api";
+import { connect } from "../connect";
+import { StoreContext } from "./context/storeContext";
+import { CartItemType, ContextType, ProductType } from "../types/types";
 
 function Store(props: any) {
   const [shopingCart, setShopingCart] = useState([]);

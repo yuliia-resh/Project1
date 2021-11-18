@@ -1,5 +1,5 @@
-import Store from "./shared/components/Store/Store";
-import Routes from "./shared/components/Routes";
+import Store from "./Store/Store";
+import Routes from "./Routes";
 
 function App() {
   return (

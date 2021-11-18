@@ -1,5 +1,5 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import queryStirng from "query-string";
 import styles from "./Search.module.scss";
 
@@ -7,7 +7,7 @@ function Search() {
   const history = useHistory();
   const location = useLocation();
 
-  const handleChage = useCallback((e: any) => {
+  const handleChange = useCallback((e: any) => {
     history.push(`${location?.pathname}?search=${e.target.value}`);
   }, []);
 
@@ -23,7 +23,7 @@ function Search() {
         autoFocus
         required
         value={query.search as string}
-        onChange={handleChage}
+        onChange={handleChange}
       />
     </form>
   );

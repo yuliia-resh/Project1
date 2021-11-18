@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CartItemType, ProductType } from "../shared/types/types";
+import { CartItemType, ProductType } from "../types/types";
 
 const BASE_URL = "http://localhost:3000";
 

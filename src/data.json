@@ -124,19 +124,17 @@
   ],
   "cart": [
     {
-      "id": 4,
-      "title": "Cheesy Pasta",
-      "price": 18,
-      "image": "https://www.themealdb.com/images/category/lamb.png",
+      "id": 9,
+      "title": "Side",
+      "price": 35,
+      "image": "https://www.themealdb.com/images/category/side.png",
       "ingredients": [
-        "Penne pasta",
-        "chicken stock",
-        "dried oregano",
-        "spinach",
-        "salt",
-        "mozzarella cheese"
+        "Meat",
+        "Tomato",
+        "Oil",
+        "Sugar"
       ],
-      "count": 1
+      "count": 5
     }
   ]
 }

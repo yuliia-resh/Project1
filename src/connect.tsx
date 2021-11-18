@@ -1,4 +1,4 @@
-import { StoreContext } from "./context/storeContext";
+import { StoreContext } from "./Store/context/storeContext";
 
 export function connect(Component: any) {
   return function CoonnectComponent(props: any) {

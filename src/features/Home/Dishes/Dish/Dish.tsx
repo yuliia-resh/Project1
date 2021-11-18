@@ -1,4 +1,4 @@
-import { ProductType } from "../../../types/types";
+import { ProductType } from "../../../../types/types";
 import styles from "./Dish.module.scss";
 let classNames = require("classnames");
 

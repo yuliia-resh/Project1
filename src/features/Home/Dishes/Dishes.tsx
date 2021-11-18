@@ -4,9 +4,9 @@ import { useLocation } from "react-router";
 import queryStirng from "query-string";
 import Dish from "./Dish/Dish";
 import styles from "./Dishes.module.scss";
-import { ProductType, PropsType } from "../../types/types";
-import { connect } from "../../connect";
-import Loading from "../Loading/Loading";
+import { ProductType, PropsType } from "../../../types/types";
+import { connect } from "../../../connect";
+import Loading from "../../../components/Loading/Loading";
 
 function Dishes(props: PropsType) {
   const { store } = props;
