@@ -17,7 +17,7 @@ app.get("/ping", function (req, res) {
   return res.send("pong");
 });
 
-app.get("/search", function (req, res) {
+app.get("/data", function (req, res) {
   res.json(data);
 });
 
