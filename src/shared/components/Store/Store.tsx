@@ -122,7 +122,7 @@ function Store(props: any) {
       onDeleteFromCart: onDeleteFromCart,
       getTotalPrice: getTotalPrice,
       getCountsOfProducts: getCountsOfProducts,
-      getProducts: getProducts,
+      getProducts: getProducts, //add getCartProducts and give it to useEffect in Cart.tsx
     };
   };
 
