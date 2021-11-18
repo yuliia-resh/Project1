@@ -2,7 +2,7 @@ const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
 const port = process.env.PORT || 8080;
-const data = require("./src/data.json");
+const data = "./src/data.json";
 
 // здесь у нас происходит импорт пакетов и определяется порт нашего сервера
 const app = express();
