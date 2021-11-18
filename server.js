@@ -1,7 +1,7 @@
 const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
-const port = process?.env;
+const port = process?.env?.path;
 
 const { exec } = require("child_process");
 
