@@ -4,20 +4,6 @@ const path = require("path");
 const port = process.env.PORT || 8080;
 const data = require("./src/data.json");
 
-const { exec } = require("child_process");
-
-exec("npx json-server --watch ./src/data.json", (error, data, getter) => {
-  if (error) {
-    console.log("error", error.message);
-    return;
-  }
-  if (getter) {
-    console.log("data", data);
-    return;
-  }
-  console.log("data", data);
-});
-
 // здесь у нас происходит импорт пакетов и определяется порт нашего сервера
 const app = express();
 app.use(favicon(__dirname + "/build/favicon.ico"));
