@@ -124,17 +124,34 @@
   ],
   "cart": [
     {
-      "id": 9,
-      "title": "Side",
+      "id": 3,
+      "title": "Dessert",
       "price": 35,
-      "image": "https://www.themealdb.com/images/category/side.png",
+      "image": "https://assets.rbl.ms/21608152/origin.jpg",
       "ingredients": [
         "Meat",
         "Tomato",
-        "Oil",
-        "Sugar"
+        "Oil"
       ],
-      "count": 5
+      "count": 2
+    },
+    {
+      "id": 2,
+      "title": "Burger",
+      "price": 23,
+      "image": "https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/9:4/w_3752,h_1667,c_limit/Smashburger-recipe-120219.jpg",
+      "ingredients": [
+        "Beef",
+        "egg",
+        "onions",
+        "lettuce",
+        "tomato",
+        "mayonnaise",
+        "ketchup",
+        "salt",
+        "pepper"
+      ],
+      "count": 2
     }
   ]
 }
