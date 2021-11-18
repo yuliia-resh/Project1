@@ -124,18 +124,6 @@
   ],
   "cart": [
     {
-      "id": 3,
-      "title": "Dessert",
-      "price": 35,
-      "image": "https://assets.rbl.ms/21608152/origin.jpg",
-      "ingredients": [
-        "Meat",
-        "Tomato",
-        "Oil"
-      ],
-      "count": 2
-    },
-    {
       "id": 2,
       "title": "Burger",
       "price": 23,
@@ -151,7 +139,23 @@
         "salt",
         "pepper"
       ],
-      "count": 2
+      "count": 3
+    },
+    {
+      "id": 1,
+      "title": "Raspberry waffle",
+      "price": 12,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkSxj_nkffcX8QTSQcvFo7BJnScZCIWD6e9w&usqp=CAU",
+      "ingredients": [
+        "Raspberries",
+        "milk",
+        "coconut oil",
+        "flour",
+        "eggs",
+        "lemon juice",
+        "syrup"
+      ],
+      "count": 1
     }
   ]
 }

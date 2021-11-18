@@ -2,11 +2,10 @@ const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
 const port = process.env.PORT;
-const app = express();
 
 const { exec } = require("child_process");
 
-exec("npx json-server --watch ./data.json", (error, data, getter) => {
+exec("json-server --watch ./data.json", (error, data, getter) => {
   if (error) {
     console.log("error", error.message);
     return;
@@ -36,4 +35,4 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(port);
+app.listen(port || 3001);
