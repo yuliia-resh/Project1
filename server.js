@@ -1,22 +1,12 @@
-const { exec } = require("child_process");
-
+const jsonServer = require("json-server");
+const server = jsonServer.create();
+const router = jsonServer.router("db.json");
+const middlewares = jsonServer.defaults();
 const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
 
-const port = String(process.env.PORT);
-
-exec("json-server --watch ./data.json", (error, data, getter) => {
-  if (error) {
-    console.log("error", error.message);
-    return;
-  }
-  if (getter) {
-    console.log("data", data);
-    return;
-  }
-  console.log("data", data);
-});
+const port = process.env.PORT;
 
 // здесь у нас происходит импорт пакетов и определяется порт нашего сервера
 const app = express();
@@ -25,6 +15,11 @@ app.use(favicon(__dirname + "/build/favicon.ico"));
 //здесь наше приложение отдаёт статику
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, "build")));
+
+server.use(middlewares);
+server.use(router);
+
+server.listen(port);
 
 //простой тест сервера
 app.get("/ping", function (req, res) {
