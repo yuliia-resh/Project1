@@ -1,30 +1,32 @@
 const jsonServer = require("json-server");
 const server = jsonServer.create();
-const router = jsonServer.router("data.json");
-const middlewares = jsonServer.defaults();
-const express = require("express");
-const favicon = require("express-favicon");
-const path = require("path");
+const router = jsonServer.router("./data.json");
+const middlewares = jsonServer.defaults({
+  static: "./build",
+});
 
-const port = process.env.PORT;
+// const express = require("express");
+// const path = require("path");
 
-const app = express();
+const port = process.env.PORT || 8080;
 
 server.use(middlewares);
+server.use(
+  jsonServer.rewriter({
+    "/api/*": "/$1",
+  })
+);
 server.use(router);
+
+// server.use(express.static(__dirname));
+// server.use(express.static(path.join(__dirname, "build")));
+
+// server.get("/ping", function (req, res) {
+//   return res.send("pong");
+// });
+
+// server.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
+
 server.listen(port);
-
-app.use(favicon(__dirname + "/build/favicon.ico"));
-
-app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("/ping", function (req, res) {
-  return res.send("pong");
-});
-
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
-app.listen(port);
