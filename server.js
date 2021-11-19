@@ -8,25 +8,21 @@ const path = require("path");
 
 const port = process.env.PORT;
 
-// здесь у нас происходит импорт пакетов и определяется порт нашего сервера
 const app = express();
-app.use(favicon(__dirname + "/build/favicon.ico"));
-
-//здесь наше приложение отдаёт статику
-app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "build")));
 
 server.use(middlewares);
 server.use(router);
-
 server.listen(port);
 
-//простой тест сервера
+app.use(favicon(__dirname + "/build/favicon.ico"));
+
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "build")));
+
 app.get("/ping", function (req, res) {
   return res.send("pong");
 });
 
-//обслуживание html
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
