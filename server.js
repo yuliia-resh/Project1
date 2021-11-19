@@ -4,7 +4,7 @@ const express = require("express");
 const favicon = require("express-favicon");
 const path = require("path");
 
-const port = process.env.PORT || 3001;
+const port = String(process.env.PORT);
 
 exec("json-server --watch ./data.json", (error, data, getter) => {
   if (error) {
@@ -36,4 +36,4 @@ app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(port || 3001);
+app.listen(port);
