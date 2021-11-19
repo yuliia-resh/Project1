@@ -5,9 +5,6 @@ const middlewares = jsonServer.defaults({
   static: "./build",
 });
 
-// const express = require("express");
-// const path = require("path");
-
 const port = process.env.PORT;
 
 server.use(middlewares);
@@ -17,16 +14,5 @@ server.use(
   })
 );
 server.use(router);
-
-// server.use(express.static(__dirname));
-// server.use(express.static(path.join(__dirname, "build")));
-
-// server.get("/ping", function (req, res) {
-//   return res.send("pong");
-// });
-
-// server.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
 
 server.listen(port);
