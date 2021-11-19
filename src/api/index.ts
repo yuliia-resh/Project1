@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CartItemType, ProductType } from "../types/types";
 
-const BASE_URL = process.env.port as string;
+const BASE_URL = process.env.PORT || 3001;
 
 export const getAllProductsApi = () => {
   return axios.get(`${BASE_URL}/data`);

@@ -1,28 +1,26 @@
-import express from "express";
-// import favicon from "express-favicon";
-import path from "path";
-const port = process.env.port as string;
+const { exec } = require("child_process");
 
-import { exec } from "child_process";
+const express = require("express");
+const favicon = require("express-favicon");
+const path = require("path");
 
-exec(
-  "json-server --watch ./data.json",
-  (error: any, data: any, getter: any) => {
-    if (error) {
-      console.log("error", error.message);
-      return;
-    }
-    if (getter) {
-      console.log("data", data);
-      return;
-    }
-    console.log("data", data);
+const port = process.env.PORT || 3001;
+
+exec("json-server --watch ./data.json", (error, data, getter) => {
+  if (error) {
+    console.log("error", error.message);
+    return;
   }
-);
+  if (getter) {
+    console.log("data", data);
+    return;
+  }
+  console.log("data", data);
+});
 
 // здесь у нас происходит импорт пакетов и определяется порт нашего сервера
 const app = express();
-// app.use(favicon(__dirname + "/build/favicon.ico"));
+app.use(favicon(__dirname + "/build/favicon.ico"));
 
 //здесь наше приложение отдаёт статику
 app.use(express.static(__dirname));

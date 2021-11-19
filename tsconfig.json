@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "Store.tsx", "src/Routes.tsx", "src/Store/context", "src/types", "src/connect.tsx", "server.ts"  ]
+, "Store.tsx", "src/Routes.tsx", "src/Store/context", "src/types", "src/connect.tsx", "server.js"  ]
 }
